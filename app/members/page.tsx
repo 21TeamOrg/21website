@@ -6,7 +6,6 @@ import Hero from "@/components/Hero";
 import { MemberCard } from "@/components/MemberCard";
 import { GlassCard } from "@/components/GlassCard";
 import { HoloDivider } from "@/components/HoloDivider";
-import useConfetti from "@/lib/useConfetti";
 
 // ...existing code...
 
@@ -29,7 +28,7 @@ export default function MembersPage() {
   const [sortBy, setSortBy] = useState<string>("name");
   const [sortDir, setSortDir] = useState<"asc" | "desc">("asc");
   const [expanded, setExpanded] = useState<string | null>(null);
-  const confetti = useConfetti(!!expanded);
+
   const [view, setView] = useState<"grid" | "list">("grid");
   const [page, setPage] = useState(1);
   const pageSize = 9;
@@ -120,7 +119,7 @@ export default function MembersPage() {
     <>
       <Navbar />
       <Hero />
-      {confetti}
+
       <div className="max-w-7xl mx-auto py-10 px-4">
         <GlassCard className="mb-8 shadow-2xl bg-gradient-to-br from-slate-900/80 to-black/80">
           <h1 className="text-5xl font-extrabold mb-4 text-center text-cyan-300 drop-shadow-neon tracking-wide font-display">
