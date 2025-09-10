@@ -13,6 +13,7 @@ import {
   Environment,
   ContactShadows,
 } from "@react-three/drei";
+import { OrbitControls as OrbitControlsImpl } from "three-stdlib";
 
 function LogoModel({ autoRotate }: { autoRotate: boolean }) {
   const { scene } = useGLTF("/images/3D/logo.gltf");
@@ -36,19 +37,16 @@ const Team21Logo3D: React.FC = () => {
   // Controls auto-rotation state
   const [autoRotate, setAutoRotate] = useState(true);
   const idleTimeout = useRef<NodeJS.Timeout | null>(null);
-  const controlsRef = useRef<typeof OrbitControls | null>(null);
+  const controlsRef = useRef<OrbitControlsImpl | null>(null);
 
   // Pause auto-rotate on user interaction, resume after 3s idle
   const handleStart = useCallback(() => {
-    setAutoRotate(false as unknown);
+    setAutoRotate(false);
     if (idleTimeout.current) clearTimeout(idleTimeout.current);
   }, []);
   const handleEnd = useCallback(() => {
     if (idleTimeout.current) clearTimeout(idleTimeout.current);
-    idleTimeout.current = setTimeout(
-      () => setAutoRotate(true as unknown),
-      3000
-    );
+    idleTimeout.current = setTimeout(() => setAutoRotate(true), 3000);
   }, []);
 
   return (

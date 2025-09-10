@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaSignInAlt } from "react-icons/fa";
 
@@ -16,7 +17,7 @@ export default function Navbar() {
   return (
     <nav className="sticky top-0 z-50 w-full bg-black/80 backdrop-blur border-b-2 border-cyan-500 shadow-glow">
       <div className="flex items-center justify-between px-6 py-3 max-w-7xl mx-auto">
-        <a
+        <Link
           href="/#home"
           className="font-bold text-xl tracking-wide text-cyan-400"
         >
@@ -26,7 +27,7 @@ export default function Navbar() {
             className="inline w-8 h-8 mr-2 align-middle"
           />
           TEAM 21
-        </a>
+        </Link>
         <div className="md:hidden">
           <button
             aria-label="Toggle menu"

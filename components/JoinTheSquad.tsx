@@ -5,7 +5,6 @@ import * as z from "zod";
 import { motion } from "framer-motion";
 import { entrance, feedback, loader } from "@/lib/motion";
 import { NeonButton } from "./NeonButton";
-import useConfetti from "@/lib/useConfetti";
 
 const joinSchema = z.object({
   gamerTag: z.string().min(2, "Enter your gamer tag"),
@@ -41,7 +40,6 @@ export const JoinTheSquad: React.FC = () => {
   const [step, setStep] = useState(0);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
-  const confetti = useConfetti(success);
   const {
     control,
     handleSubmit,
@@ -72,7 +70,6 @@ export const JoinTheSquad: React.FC = () => {
       id="join"
       className="relative py-24 bg-gradient-to-b from-black via-slate-950 to-slate-900 overflow-hidden"
     >
-      {confetti}
       <motion.div
         className="max-w-lg mx-auto flex flex-col items-center gap-8"
         variants={entrance}

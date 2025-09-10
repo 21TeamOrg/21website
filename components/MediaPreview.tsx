@@ -105,7 +105,7 @@ export const MediaPreview: React.FC = () => {
   }, [mediaItems.length]);
 
   // For looping, slice visible items with wrap-around
-  let visibleItems: { src: string; thumb?: string }[] = [];
+  const visibleItems: { src: string; thumb?: string }[] = [];
   if (mediaItems.length > 0) {
     for (let i = 0; i < showCount; i++) {
       visibleItems.push(mediaItems[(current + i) % mediaItems.length]);

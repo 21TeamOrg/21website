@@ -15,7 +15,7 @@ type NeonButtonProps = (ButtonProps | AnchorProps) & {
 };
 
 export const NeonButton: React.FC<NeonButtonProps> = (props) => {
-  const { as = "button", children, ...rest } = props as any;
+  const { as = "button", children, ...rest } = props;
   if (as === "a") {
     const { href, ...anchorProps } = rest as AnchorProps;
     return (

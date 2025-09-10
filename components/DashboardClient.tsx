@@ -58,7 +58,7 @@ export default function DashboardClient({ user }: { user: User }) {
       const profile = {
         displayName: newMember.displayName,
         bio: newMember.bio,
-  // image: newMember.image, // removed, not part of User profile type
+        // image: newMember.image, // removed, not part of User profile type
         socials: {
           twitter: newMember.twitter,
           discord: newMember.discord,
@@ -106,7 +106,7 @@ export default function DashboardClient({ user }: { user: User }) {
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) {
     const { name, value } = e.target;
-  setProfile((prev: User["profile"]) => {
+    setProfile((prev: User["profile"]) => {
       if (["twitter", "discord", "twitch"].includes(name)) {
         return {
           ...prev,
@@ -277,7 +277,10 @@ export default function DashboardClient({ user }: { user: User }) {
                 className="border border-cyan-700 bg-slate-800 text-white rounded px-3 py-2 focus:ring-2 focus:ring-cyan-500"
                 value={newMember.role}
                 onChange={(e) =>
-                  setNewMember({ ...newMember, role: e.target.value as UserRole })
+                  setNewMember({
+                    ...newMember,
+                    role: e.target.value as UserRole,
+                  })
                 }
               >
                 {roles.map((r) => (
@@ -302,7 +305,7 @@ export default function DashboardClient({ user }: { user: User }) {
                   setNewMember({ ...newMember, bio: e.target.value })
                 }
               />
-                    {/* Image field removed: not part of User profile type */}
+              {/* Image field removed: not part of User profile type */}
               <input
                 className="border border-cyan-700 bg-slate-800 text-white rounded px-3 py-2 focus:ring-2 focus:ring-cyan-500"
                 placeholder="Twitter"
@@ -397,7 +400,13 @@ export default function DashboardClient({ user }: { user: User }) {
                         value={u.profile.displayName || ""}
                         onChange={(e) => {
                           const updated = [...users];
-                          updated[idx] = { ...u, profile: { ...u.profile, displayName: e.target.value } };
+                          updated[idx] = {
+                            ...u,
+                            profile: {
+                              ...u.profile,
+                              displayName: e.target.value,
+                            },
+                          };
                           setUsers(updated);
                         }}
                       />
@@ -408,16 +417,16 @@ export default function DashboardClient({ user }: { user: User }) {
                         value={u.profile.bio || ""}
                         onChange={(e) => {
                           const updated = [...users];
-                          updated[idx] = { ...u, profile: { ...u.profile, bio: e.target.value } };
+                          updated[idx] = {
+                            ...u,
+                            profile: { ...u.profile, bio: e.target.value },
+                          };
                           setUsers(updated);
                         }}
                       />
                     </td>
                     <td className="p-2">
-                      <input
-                        className="border border-cyan-700 bg-slate-900 text-white rounded px-2 py-1 w-32 focus:ring-2 focus:ring-cyan-500"
-                        {/* Image field removed: not part of User profile type */}
-                      />
+                      {/* Image field removed: not part of User profile type */}
                     </td>
                     <td className="p-2">
                       <input
@@ -425,7 +434,16 @@ export default function DashboardClient({ user }: { user: User }) {
                         value={u.profile.socials?.twitter || ""}
                         onChange={(e) => {
                           const updated = [...users];
-                          updated[idx] = { ...u, profile: { ...u.profile, socials: { ...u.profile.socials, twitter: e.target.value } } };
+                          updated[idx] = {
+                            ...u,
+                            profile: {
+                              ...u.profile,
+                              socials: {
+                                ...u.profile.socials,
+                                twitter: e.target.value,
+                              },
+                            },
+                          };
                           setUsers(updated);
                         }}
                       />
@@ -436,7 +454,16 @@ export default function DashboardClient({ user }: { user: User }) {
                         value={u.profile.socials?.discord || ""}
                         onChange={(e) => {
                           const updated = [...users];
-                          updated[idx] = { ...u, profile: { ...u.profile, socials: { ...u.profile.socials, discord: e.target.value } } };
+                          updated[idx] = {
+                            ...u,
+                            profile: {
+                              ...u.profile,
+                              socials: {
+                                ...u.profile.socials,
+                                discord: e.target.value,
+                              },
+                            },
+                          };
                           setUsers(updated);
                         }}
                       />
@@ -447,7 +474,16 @@ export default function DashboardClient({ user }: { user: User }) {
                         value={u.profile.socials?.twitch || ""}
                         onChange={(e) => {
                           const updated = [...users];
-                          updated[idx] = { ...u, profile: { ...u.profile, socials: { ...u.profile.socials, twitch: e.target.value } } };
+                          updated[idx] = {
+                            ...u,
+                            profile: {
+                              ...u.profile,
+                              socials: {
+                                ...u.profile.socials,
+                                twitch: e.target.value,
+                              },
+                            },
+                          };
                           setUsers(updated);
                         }}
                       />
